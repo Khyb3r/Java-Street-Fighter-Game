@@ -18,6 +18,10 @@ public class GameWorld extends World {
         student.setPosition(new Vec2(7, -9));
         student.setCredits(15);
 
+        // make a professor
+        Professor professor = new Professor(this);
+        professor.setPosition(new Vec2(2,10));
+        professor.setAlwaysOutline(true);
         // make a suspended platform
         Shape platformShape = new BoxShape(3, 0.5f);
         StaticBody platform1 = new StaticBody(this, platformShape);
