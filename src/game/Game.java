@@ -7,9 +7,11 @@ import org.jbox2d.common.Vec2;
 import javax.swing.JFrame;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.plaf.basic.BasicTreeUI;
 
 /**
  * Your main game entry point
@@ -21,28 +23,23 @@ public class Game {
 
     public Game() {
 
-        //1. make an empty game world
         GameWorld world = new GameWorld();
+        GameView view = new GameView(world, 700, 540);
+        MouseListener mouseListener = new GiveFocus();
+
+        view.addKeyListener(new StudentKeyController(world.getStudent()));
+        BallMouseController ballMouseController = new BallMouseController(world,view);
+        view.addMouseListener(ballMouseController);
 
 
-        //2. populate it with bodies (ex: platforms, collectibles, characters)
 
+        view.setFocusable(true);
 
-
-
-        //3. make a view to look into the game world
-        // UserView view = new UserView(world, 500, 500);
-        GameView view = new GameView(world, 500, 500);
-
-
-        //optional: draw a 1-metre grid over the view
-        // view.setGridResolution(1);
-
-
-        //4. create a Java window (frame) and add the game
-        //   view to it
         final JFrame frame = new JFrame("City Game");
         frame.add(view);
+
+        // draw a 1-metre grid over the view
+        view.setGridResolution(1);
 
         // enable the frame to quit the application
         // when the x button is pressed
