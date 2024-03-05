@@ -20,9 +20,9 @@ public class PlayerFighterKeyController implements KeyListener {
         if (e.getKeyChar() == 'w')  {
             fighter.jump(10f);
         } else if (e.getKeyChar() == 'd') {
-            fighter.startWalking(4.5f);
+            fighter.startWalking(6);
         } else if (e.getKeyChar() == 'a') {
-            fighter.startWalking(-4.5f);
+            fighter.startWalking(-6);
         }
     }
 

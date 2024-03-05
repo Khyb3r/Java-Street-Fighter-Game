@@ -38,6 +38,12 @@ public class GameWorld extends World {
         enemyThree.setPosition(new Vec2(16,3));
         enemyThree.setAlwaysOutline(true);
 
+        // make 2 obstacles on top of platforms
+        Obstacle spikeOne = new Obstacle(this,"spike");
+        spikeOne.setPosition(new Vec2(-2,-3));
+        Obstacle boulderOne = new Obstacle(this,"boulder");
+        boulderOne.setPosition(new Vec2(-3,6));
+
 
 
 
