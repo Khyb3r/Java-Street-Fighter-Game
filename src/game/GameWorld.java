@@ -1,11 +1,10 @@
 package game;
 
 import city.cs.engine.*;
-import game.Student;
 import org.jbox2d.common.Vec2;
 
 public class GameWorld extends World {
-    private Student student;
+    private Fighter fighter;
     private Ball ball;
 
     public GameWorld() {
@@ -17,9 +16,9 @@ public class GameWorld extends World {
         ground.setPosition(new Vec2(0f, -11.5f));
 
         // make the character
-        student = new Student(this);
-        student.setPosition(new Vec2(7, -9));
-        student.setAlwaysOutline(true);
+        fighter = new Fighter(this);
+        fighter.setPosition(new Vec2(7, -9));
+        fighter.setAlwaysOutline(true);
 
 
         // make a professor
@@ -50,5 +49,5 @@ public class GameWorld extends World {
         //(don't add anything related to the view)
 
         }
-    public Student getStudent(){return this.student;}
+    public Fighter getFighter(){return this.fighter;}
 }

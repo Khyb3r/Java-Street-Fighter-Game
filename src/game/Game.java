@@ -24,10 +24,11 @@ public class Game {
     public Game() {
 
         GameWorld world = new GameWorld();
-        GameView view = new GameView(world, 700, 540);
+        GameView view = new GameView(world, 800, 600);
+
         MouseListener mouseListener = new GiveFocus();
 
-        view.addKeyListener(new StudentKeyController(world.getStudent()));
+        view.addKeyListener(new StudentKeyController(world.getFighter()));
         BallMouseController ballMouseController = new BallMouseController(world,view);
         view.addMouseListener(ballMouseController);
 
@@ -53,7 +54,7 @@ public class Game {
         frame.setVisible(true);
 
         //optional: uncomment this to make a debugging view
-         JFrame debugView = new DebugViewer(world, 500, 500);
+         JFrame debugView = new DebugViewer(world, 800, 600);
 
         // start our game world simulation!
         world.start();
