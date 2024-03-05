@@ -1,17 +1,10 @@
 package game;
 
 import city.cs.engine.*;
-import city.cs.engine.Shape;
-import org.jbox2d.common.Vec2;
 
 import javax.swing.JFrame;
 
-import java.awt.*;
 import java.awt.event.MouseListener;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.plaf.basic.BasicTreeUI;
 
 /**
  * Your main game entry point
@@ -26,15 +19,13 @@ public class Game {
         GameWorld world = new GameWorld();
         GameView view = new GameView(world, 800, 600);
 
-        MouseListener mouseListener = new GiveFocus();
 
-        view.addKeyListener(new StudentKeyController(world.getFighter()));
+        MouseListener mouseListener = new GiveFocus();
+        view.setFocusable(true);
+        view.addKeyListener(new PlayerFighterKeyController(world.getPlayerFighter()));
         BallMouseController ballMouseController = new BallMouseController(world,view);
         view.addMouseListener(ballMouseController);
 
-
-
-        view.setFocusable(true);
 
         final JFrame frame = new JFrame("City Game");
         frame.add(view);

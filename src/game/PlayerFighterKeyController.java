@@ -3,12 +3,12 @@ package game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class StudentKeyController implements KeyListener {
+public class PlayerFighterKeyController implements KeyListener {
 
 
-    private Fighter fighter;
+    private PlayerFighter fighter;
 
-    public StudentKeyController(Fighter fighter1) {
+    public PlayerFighterKeyController(PlayerFighter fighter1) {
         this.fighter = fighter1;
     }
     @Override
@@ -17,14 +17,12 @@ public class StudentKeyController implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("Key Pressed " + e.getKeyChar() );
         if (e.getKeyChar() == 'w')  {
-            System.out.println("Jumping!");
             fighter.jump(10f);
         } else if (e.getKeyChar() == 'd') {
-            fighter.startWalking(3);
+            fighter.startWalking(4.5f);
         } else if (e.getKeyChar() == 'a') {
-            fighter.startWalking(-3);
+            fighter.startWalking(-4.5f);
         }
     }
 

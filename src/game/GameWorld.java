@@ -4,27 +4,42 @@ import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
 public class GameWorld extends World {
-    private Fighter fighter;
+    private PlayerFighter playerFighter;
     private Ball ball;
 
     public GameWorld() {
         super();
 
         // make the ground
-        Shape shape = new BoxShape(50, 0.5f);
-        StaticBody ground = new StaticBody(this, shape);
-        ground.setPosition(new Vec2(0f, -11.5f));
+        Shape groundShape = new BoxShape(25, 0.5f);
+        StaticBody ground = new StaticBody(this, groundShape);
+        ground.setPosition(new Vec2(0f, -14.5f));
 
-        // make the character
-        fighter = new Fighter(this);
-        fighter.setPosition(new Vec2(7, -9));
-        fighter.setAlwaysOutline(true);
+        // make walls around the entire view
+        Shape wallShape = new BoxShape(0.5f,25f);
+        StaticBody wallOne = new StaticBody(this,wallShape);
+        wallOne.setPosition(new Vec2(-20f,0));
+        StaticBody wallTwo = new StaticBody(this,wallShape);
+        wallTwo.setPosition(new Vec2(20f,0));
+
+        // make the player character
+        playerFighter = new PlayerFighter(this,"player");
+        playerFighter.setPosition(new Vec2(7, -9));
+        playerFighter.setAlwaysOutline(true);
+
+        // make 3 enemy players
+        Fighter enemyOne = new Fighter(this,"enemy");
+        enemyOne.setPosition(new Vec2(10,6));
+        enemyOne.setAlwaysOutline(true);
+        Fighter enemyTwo = new Fighter(this,"enemy");
+        enemyTwo.setPosition(new Vec2(13,9));
+        enemyTwo.setAlwaysOutline(true);
+        Fighter enemyThree = new Fighter(this,"enemy");
+        enemyThree.setPosition(new Vec2(16,3));
+        enemyThree.setAlwaysOutline(true);
 
 
-        // make a professor
-        Professor professor = new Professor(this);
-        professor.setPosition(new Vec2(2,10));
-        professor.setAlwaysOutline(true);
+
 
         // make a suspended platform
         Shape platformShape = new BoxShape(3, 0.5f);
@@ -49,5 +64,5 @@ public class GameWorld extends World {
         //(don't add anything related to the view)
 
         }
-    public Fighter getFighter(){return this.fighter;}
+    public PlayerFighter getPlayerFighter(){return this.playerFighter;}
 }
