@@ -29,13 +29,13 @@ public class BallMouseController implements MouseListener {
     public void mousePressed(MouseEvent e) {
         // create a new ball
         Ball balls = new Ball(world);
+        OrbProjectile orbProjectile = new OrbProjectile(world);
 
         // get the coordinates of the mouse click
         Point mousePoint = e.getPoint();
 
         // transform these coordinates into the world coordinates
         Vec2 worldPoint = view.viewToWorld(mousePoint);
-        balls.setPosition(worldPoint);
     }
 
 

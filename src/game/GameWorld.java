@@ -24,28 +24,40 @@ public class GameWorld extends World {
 
         // make the player character
         playerFighter = new PlayerFighter(this,"player");
-        playerFighter.setPosition(new Vec2(7, -9));
+        playerFighter.setPosition(new Vec2(17, -13));
         playerFighter.setAlwaysOutline(true);
+
+        // make a player obstacle collision object
+        PlayerObstacleCollision playerObstacleCollision = new PlayerObstacleCollision(playerFighter);
+        playerFighter.addCollisionListener(playerObstacleCollision);
+
 
         // make 3 enemy players
         Fighter enemyOne = new Fighter(this,"enemy");
-        enemyOne.setPosition(new Vec2(10,6));
+        enemyOne.setPosition(new Vec2(5,-13));
         enemyOne.setAlwaysOutline(true);
         Fighter enemyTwo = new Fighter(this,"enemy");
-        enemyTwo.setPosition(new Vec2(13,9));
+        enemyTwo.setPosition(new Vec2(5,-13));
         enemyTwo.setAlwaysOutline(true);
-        Fighter enemyThree = new Fighter(this,"enemy");
-        enemyThree.setPosition(new Vec2(16,3));
-        enemyThree.setAlwaysOutline(true);
 
-        // make 2 obstacles on top of platforms
+        // make 2 spike obstacles and a boulder
         Obstacle spikeOne = new Obstacle(this,"spike");
-        spikeOne.setPosition(new Vec2(-2,-3));
+        Obstacle spikeTwo = new Obstacle(this,"spike");
+        spikeOne.setPosition(new Vec2(-10,-13.23f));
+        spikeTwo.setPosition(new Vec2(10,-13.23f));
+
         Obstacle boulderOne = new Obstacle(this,"boulder");
         boulderOne.setPosition(new Vec2(-3,6));
 
+        // make a platform enclosure
+        Shape roofShapeLeft = new BoxShape(19.5f,0.5f);
+        StaticBody roofLeftSide = new StaticBody(this,roofShapeLeft);
+        roofLeftSide.setPosition(new Vec2(-8,-9f));
 
-
+        // make an elevated platform to get to floor 2
+        Shape elevatedPlatformShape = new BoxShape(1.5f,0.25f);
+        StaticBody elevatedPlatform = new StaticBody(this,elevatedPlatformShape);
+        elevatedPlatform.setPosition(new Vec2(16,-11));
 
         // make a suspended platform
         Shape platformShape = new BoxShape(3, 0.5f);
@@ -61,9 +73,13 @@ public class GameWorld extends World {
         platform3.setPosition(new Vec2(4,-2f));
         platform3.setAngleDegrees(25);
 
+        PlayerObstacleCollision gcl = new PlayerObstacleCollision(getPlayerFighter());
+        playerFighter.addCollisionListener(gcl);
+        ground.addCollisionListener(gcl);
+
         // make a ball
-        ball = new Ball(this);
-        ball.setPosition(new Vec2(6,1));
+       // ball = new Ball(this);
+       // ball.setPosition(new Vec2(6,1));
 
         //**move** here the rest of the code from Game.java that
         //populates the World - add platforms, Student, etc.

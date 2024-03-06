@@ -2,6 +2,7 @@ package game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLOutput;
 
 public class PlayerFighterKeyController implements KeyListener {
 
@@ -18,11 +19,14 @@ public class PlayerFighterKeyController implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyChar() == 'w')  {
-            fighter.jump(10f);
+            System.out.println("jumped");
+            fighter.jump(9.75f);
         } else if (e.getKeyChar() == 'd') {
             fighter.startWalking(6);
         } else if (e.getKeyChar() == 'a') {
             fighter.startWalking(-6);
+        } else if (e.getKeyChar() == KeyEvent.VK_SPACE) {
+            fighter.shootOrb();
         }
     }
 
