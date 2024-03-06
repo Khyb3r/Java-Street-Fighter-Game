@@ -49,6 +49,7 @@ public class Game {
 
         // start our game world simulation!
         world.start();
+        view.requestFocus();
     }
 
     /** Run the game. */

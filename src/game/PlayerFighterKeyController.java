@@ -21,12 +21,20 @@ public class PlayerFighterKeyController implements KeyListener {
         if (e.getKeyChar() == 'w')  {
             System.out.println("jumped");
             fighter.jump(9.75f);
-        } else if (e.getKeyChar() == 'd') {
+        }
+        else if (e.getKeyChar() == 'd') {
             fighter.startWalking(6);
-        } else if (e.getKeyChar() == 'a') {
+
+        }
+        else if (e.getKeyChar() == 'a') {
             fighter.startWalking(-6);
-        } else if (e.getKeyChar() == KeyEvent.VK_SPACE) {
-            fighter.shootOrb();
+            fighter.getPlayerAttachedImage().flipVertical();
+        }
+        else if (e.getKeyChar() == 'c') {
+            fighter.shootKnifeLeft();
+        }
+        else if (e.getKeyChar() == 'v') {
+            fighter.shootKnifeRight();
         }
     }
 

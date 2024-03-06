@@ -78,8 +78,8 @@ public class GameWorld extends World {
         ground.addCollisionListener(gcl);
 
         // make a ball
-       // ball = new Ball(this);
-       // ball.setPosition(new Vec2(6,1));
+        ball = new Ball(this);
+        ball.setPosition(new Vec2(6,0));
 
         //**move** here the rest of the code from Game.java that
         //populates the World - add platforms, Student, etc.

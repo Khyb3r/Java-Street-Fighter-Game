@@ -1,8 +1,6 @@
 package game;
 
-import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
-import city.cs.engine.*;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -29,7 +27,7 @@ public class BallMouseController implements MouseListener {
     public void mousePressed(MouseEvent e) {
         // create a new ball
         Ball balls = new Ball(world);
-        OrbProjectile orbProjectile = new OrbProjectile(world);
+        ThrowingKnifeProjectile throwingKnifeProjectile = new ThrowingKnifeProjectile(world);
 
         // get the coordinates of the mouse click
         Point mousePoint = e.getPoint();
