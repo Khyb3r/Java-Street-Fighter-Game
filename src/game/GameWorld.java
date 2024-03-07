@@ -5,7 +5,6 @@ import org.jbox2d.common.Vec2;
 
 public class GameWorld extends World {
     private PlayerFighter playerFighter;
-    private Ball ball;
 
     public GameWorld() {
         super();
@@ -28,8 +27,8 @@ public class GameWorld extends World {
         playerFighter.setAlwaysOutline(true);
 
         // make a player obstacle collision object
-        PlayerObstacleCollision playerObstacleCollision = new PlayerObstacleCollision(playerFighter);
-        playerFighter.addCollisionListener(playerObstacleCollision);
+        PlayerFighterCollisions playerFighterCollisions = new PlayerFighterCollisions(playerFighter);
+        playerFighter.addCollisionListener(playerFighterCollisions);
 
 
         // make 3 enemy players
@@ -50,9 +49,9 @@ public class GameWorld extends World {
         boulderOne.setPosition(new Vec2(-3,6));
 
         // make a platform enclosure
-        Shape roofShapeLeft = new BoxShape(19.5f,0.5f);
+        Shape roofShapeLeft = new BoxShape(19.5f,0.35f);
         StaticBody roofLeftSide = new StaticBody(this,roofShapeLeft);
-        roofLeftSide.setPosition(new Vec2(-8,-9f));
+        roofLeftSide.setPosition(new Vec2(-8,-8.5f));
 
         // make an elevated platform to get to floor 2
         Shape elevatedPlatformShape = new BoxShape(1.5f,0.25f);
@@ -73,13 +72,13 @@ public class GameWorld extends World {
         platform3.setPosition(new Vec2(4,-2f));
         platform3.setAngleDegrees(25);
 
-        PlayerObstacleCollision gcl = new PlayerObstacleCollision(getPlayerFighter());
+        PlayerFighterCollisions gcl = new PlayerFighterCollisions(getPlayerFighter());
         playerFighter.addCollisionListener(gcl);
         ground.addCollisionListener(gcl);
 
-        // make a ball
-        ball = new Ball(this);
-        ball.setPosition(new Vec2(6,0));
+        CoinCollectible coinOne = new CoinCollectible(this);
+        coinOne.setPosition(new Vec2(0,-13.0f));
+        coinOne.setAlwaysOutline(true);
 
         //**move** here the rest of the code from Game.java that
         //populates the World - add platforms, Student, etc.

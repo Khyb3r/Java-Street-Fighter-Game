@@ -23,8 +23,7 @@ public class Game {
         MouseListener mouseListener = new GiveFocus();
         view.setFocusable(true);
         view.addKeyListener(new PlayerFighterKeyController(world.getPlayerFighter()));
-        BallMouseController ballMouseController = new BallMouseController(world,view);
-        view.addMouseListener(ballMouseController);
+
 
 
         final JFrame frame = new JFrame("City Game");

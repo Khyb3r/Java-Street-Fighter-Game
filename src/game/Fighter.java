@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class Fighter extends Walker {
 
-    protected static final Shape enemyFighterShape = new BoxShape(1, 1.5f);
+    protected static final Shape enemyFighterShape = new BoxShape(1, 1.2f);
 
     protected static final Shape playerFighterShape = new PolygonShape(-0.689f, -0.972f, -0.449f, 0.996f, 0.623f, 0.992f, 0.687f, -0.988f
     );
