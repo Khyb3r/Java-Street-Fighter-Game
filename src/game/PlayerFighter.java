@@ -30,7 +30,7 @@ public class PlayerFighter extends Fighter {
         throwingKnifeProjectile.applyForce(new Vec2(-50,0));
     }
 
-    
+
 
     public int getCoins() {return coinCount;}
     public void setCoins(int coins) {this.coinCount = coins;}

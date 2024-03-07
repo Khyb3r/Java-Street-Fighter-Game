@@ -26,18 +26,27 @@ public class GameWorld extends World {
         playerFighter.setPosition(new Vec2(17, -13));
         playerFighter.setAlwaysOutline(true);
 
-        // make a player obstacle collision object
+        // make a collision object for all the players related collisions
         PlayerFighterCollisions playerFighterCollisions = new PlayerFighterCollisions(playerFighter);
         playerFighter.addCollisionListener(playerFighterCollisions);
 
-
-        // make 3 enemy players
+        // make 2 enemy players
         Fighter enemyOne = new Fighter(this,"enemy");
         enemyOne.setPosition(new Vec2(5,-13));
+        enemyOne.startWalking(-1.75f);
         enemyOne.setAlwaysOutline(true);
         Fighter enemyTwo = new Fighter(this,"enemy");
-        enemyTwo.setPosition(new Vec2(5,-13));
+        enemyTwo.setPosition(new Vec2(-5,-13));
+        enemyTwo.startWalking(1.75f);
         enemyTwo.setAlwaysOutline(true);
+
+        EnemyFighterControllerPos enemyFighterControllerPos =
+                new EnemyFighterControllerPos(enemyOne,8f,2f);
+        EnemyFighterControllerNeg enemyFighterControllerNeg =
+                new EnemyFighterControllerNeg(enemyTwo,-2f,-8f);
+        this.addStepListener(enemyFighterControllerNeg);
+        this.addStepListener(enemyFighterControllerPos);
+
 
         // make 2 spike obstacles and a boulder
         Obstacle spikeOne = new Obstacle(this,"spike");
@@ -49,9 +58,9 @@ public class GameWorld extends World {
         boulderOne.setPosition(new Vec2(-3,6));
 
         // make a platform enclosure
-        Shape roofShapeLeft = new BoxShape(19.5f,0.35f);
+        Shape roofShapeLeft = new BoxShape(19.5f,0.25f);
         StaticBody roofLeftSide = new StaticBody(this,roofShapeLeft);
-        roofLeftSide.setPosition(new Vec2(-8,-8.5f));
+        roofLeftSide.setPosition(new Vec2(-8,-8f));
 
         // make an elevated platform to get to floor 2
         Shape elevatedPlatformShape = new BoxShape(1.5f,0.25f);
