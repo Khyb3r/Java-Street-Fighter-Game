@@ -30,6 +30,9 @@ public class GameWorld extends World {
         PlayerFighterCollisions playerFighterCollisions = new PlayerFighterCollisions(playerFighter);
         playerFighter.addCollisionListener(playerFighterCollisions);
 
+        // the orb projectile collision object for its behaviours
+
+
         // 2 enemy players
         Fighter enemyOne = new Fighter(this,"enemy");
         enemyOne.setPosition(new Vec2(5,-13));

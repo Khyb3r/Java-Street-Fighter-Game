@@ -5,7 +5,7 @@ import city.cs.engine.World;
 import org.jbox2d.common.Vec2;
 
 public class PlayerFighter extends Fighter {
-    private boolean facingLeft = false;
+    private boolean facingLeft;
     private int coinCount;
     private int liveCount;
     private AttachedImage attachedImage;
@@ -36,9 +36,11 @@ public class PlayerFighter extends Fighter {
         if (this.getFacingLeft()) {
             orbProjectile.setPosition(new Vec2(playerPosX - 1, playerPosY + 0.5f));
             orbProjectile.setLinearVelocity(new Vec2(-15,0));
+            orbProjectile.setAlwaysOutline(true);
         } else {
             orbProjectile.setPosition(new Vec2(playerPosX + 1, playerPosY + 0.5f));
             orbProjectile.setLinearVelocity(new Vec2(15, 0));
+            orbProjectile.setAlwaysOutline(true);
         }
 
     }

@@ -3,7 +3,7 @@ package game;
 import city.cs.engine.*;
 
 public class OrbProjectile extends DynamicBody {
-    private static final Shape orbShape = new CircleShape(0.45f);
+    private static final Shape orbShape = new CircleShape(0.3f);
     private static final BodyImage orbImage = new BodyImage("data/orbOne.png");
 
     OrbProjectile(World world) {
@@ -11,5 +11,6 @@ public class OrbProjectile extends DynamicBody {
       SolidFixture orbFixture = new SolidFixture(this,orbShape);
       addImage(orbImage);
       setGravityScale(0);
+      addCollisionListener(new OrbProjectileCollisions(this));
     }
 }
