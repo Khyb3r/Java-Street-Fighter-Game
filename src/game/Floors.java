@@ -1,29 +1,56 @@
 package game;
 
-import city.cs.engine.BodyImage;
-import city.cs.engine.Shape;
-import city.cs.engine.StaticBody;
-import city.cs.engine.World;
+import city.cs.engine.*;
+import org.jbox2d.common.Vec2;
 
 public class Floors extends StaticBody {
-    private Shape floorshape;
+    private static final Shape groundFloorshape =
+            new BoxShape(25, 0.5f);
+
+    private static final Shape firstFloorShape =
+            new BoxShape(19.5f,0.25f);
+    private static final Shape secondFloorShape =
+            new BoxShape(7.5f,0.25f);
+
+   // private static final Shape thirdFloorShape =
+   //         new BoxShape()
     private BodyImage floorImage;
     private String floorLevel;
+
+    private static Shape getFloorImage(String floorLevel) {
+        if (floorLevel == "ground") {
+            return groundFloorshape;
+        } else if (floorLevel == "firstFloor") {
+            return firstFloorShape;
+        } else if (floorLevel == "secondFloor") {
+            return secondFloorShape;
+        }
+        else return null;
+    }
+
     public Floors(World world, String floorLevel) {
-        super(world);
+        super(world,getFloorImage(floorLevel));
         switch (floorLevel) {
             case "ground":
-                floorshape = new
-
+                this.setPosition(new Vec2(0f,-14.5f));
+             //   floorImage = new BodyImage();
+             //   addImage();
                 break;
             case "floorOne":
-
+                this.setPosition(new Vec2(-8,-8f));
+            //    floorImage = new BodyImage();
+             //   addImage();
                 break;
-            case "floorTwo":
-
+            case "floorTwoLeft":
+                this.setPosition(new Vec2(-15,-0.5f));
+            //    floorImage = new BodyImage();
+             //   addImage();
+                break;
+            case "floorTwoRight":
+                this.setPosition(new Vec2(15,-0.5f));
+             //   addImage();
                 break;
             case "floorThree":
-
         }
     }
 }

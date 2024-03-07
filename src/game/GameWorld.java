@@ -10,9 +10,9 @@ public class GameWorld extends World {
         super();
 
         // the ground
-        Shape groundShape = new BoxShape(25, 0.5f);
+       /* Shape groundShape = new BoxShape(25, 0.5f);
         StaticBody ground = new StaticBody(this, groundShape);
-        ground.setPosition(new Vec2(0f, -14.5f));
+        ground.setPosition(new Vec2(0f, -14.5f)); */
 
         // walls around the entire view
         Shape wallShape = new BoxShape(0.5f,25f);
@@ -77,6 +77,8 @@ public class GameWorld extends World {
         StaticBody roofSecondFloorRightSide = new StaticBody(this,roofShapeSecondFloor);
         roofSecondFloorLeftSide.setPosition(new Vec2(-15,-0.5f));
         roofSecondFloorRightSide.setPosition(new Vec2(15,-0.5f));
+
+        Floors groundFloor = new Floors(this,"ground");
 
 
         CoinCollectible coinOne = new CoinCollectible(this);

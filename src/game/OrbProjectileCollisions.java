@@ -17,7 +17,7 @@ public class OrbProjectileCollisions implements CollisionListener {
             e.getOtherBody().destroy();
             e.getReportingBody().destroy();
         }
-        else if (e.getOtherBody() instanceof StaticBody) {
+        else if (e.getOtherBody() instanceof Floors) {
             e.getReportingBody().destroy();
         }
     }
