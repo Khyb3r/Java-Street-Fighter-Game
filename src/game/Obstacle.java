@@ -8,10 +8,9 @@ public class Obstacle extends StaticBody {
     );
     private static final BodyImage spikeImage = new BodyImage("data/spikeofficial.png",1.5f
     );
-    private static final Shape FireShape = new PolygonShape(-0.64f,-0.84f, -0.596f,0.916f, 0.628f,0.892f, 0.62f,-0.88f
-
+    private static final Shape boulderShape = new PolygonShape(-1.04f,-0.51f, -0.86f,0.65f, -0.15f,1.26f, 0.35f,1.29f, 0.86f,0.99f, 1.13f,-1.08f, -0.3f,-1.36f, -0.99f,-0.8f
     );
-    private static final BodyImage FireImage = new BodyImage("data/firepit.png",2.5f);
+    private static final BodyImage boulderImage = new BodyImage("data/fire.gif",2.5f);
     Obstacle(World world,String type) {
         super(world);
         switch (type) {
@@ -20,8 +19,8 @@ public class Obstacle extends StaticBody {
                 addImage(spikeImage);
                 break;
             case "boulder":
-                SolidFixture solidFixture1 = new SolidFixture(this,FireShape);
-                addImage(FireImage);
+                SolidFixture solidFixture1 = new SolidFixture(this,boulderShape);
+                addImage(boulderImage);
         }
     }
 }

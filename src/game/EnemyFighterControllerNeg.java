@@ -1,5 +1,6 @@
 package game;
 
+import city.cs.engine.CollisionListener;
 import city.cs.engine.StepEvent;
 import city.cs.engine.StepListener;
 

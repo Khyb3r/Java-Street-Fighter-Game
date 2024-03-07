@@ -9,28 +9,28 @@ public class GameWorld extends World {
     public GameWorld() {
         super();
 
-        // make the ground
+        // the ground
         Shape groundShape = new BoxShape(25, 0.5f);
         StaticBody ground = new StaticBody(this, groundShape);
         ground.setPosition(new Vec2(0f, -14.5f));
 
-        // make walls around the entire view
+        // walls around the entire view
         Shape wallShape = new BoxShape(0.5f,25f);
         StaticBody wallOne = new StaticBody(this,wallShape);
         wallOne.setPosition(new Vec2(-20f,0));
         StaticBody wallTwo = new StaticBody(this,wallShape);
         wallTwo.setPosition(new Vec2(20f,0));
 
-        // make the player character
+        // the player character
         playerFighter = new PlayerFighter(this,"player");
         playerFighter.setPosition(new Vec2(17, -13));
         playerFighter.setAlwaysOutline(true);
 
-        // make a collision object for all the players related collisions
+        // the collision object for all the players related collisions
         PlayerFighterCollisions playerFighterCollisions = new PlayerFighterCollisions(playerFighter);
         playerFighter.addCollisionListener(playerFighterCollisions);
 
-        // make 2 enemy players
+        // 2 enemy players
         Fighter enemyOne = new Fighter(this,"enemy");
         enemyOne.setPosition(new Vec2(5,-13));
         enemyOne.startWalking(-1.75f);
@@ -40,6 +40,7 @@ public class GameWorld extends World {
         enemyTwo.startWalking(1.75f);
         enemyTwo.setAlwaysOutline(true);
 
+        // the step listeners for both enemy players
         EnemyFighterControllerPos enemyFighterControllerPos =
                 new EnemyFighterControllerPos(enemyOne,8f,2f);
         EnemyFighterControllerNeg enemyFighterControllerNeg =
@@ -48,7 +49,7 @@ public class GameWorld extends World {
         this.addStepListener(enemyFighterControllerPos);
 
 
-        // make 2 spike obstacles and a boulder
+        // 2 spike obstacles and a boulder
         Obstacle spikeOne = new Obstacle(this,"spike");
         Obstacle spikeTwo = new Obstacle(this,"spike");
         spikeOne.setPosition(new Vec2(-10,-13.23f));
@@ -57,33 +58,23 @@ public class GameWorld extends World {
         Obstacle boulderOne = new Obstacle(this,"boulder");
         boulderOne.setPosition(new Vec2(-3,6));
 
-        // make a platform enclosure
+        // the platform enclosure
         Shape roofShapeLeft = new BoxShape(19.5f,0.25f);
         StaticBody roofLeftSide = new StaticBody(this,roofShapeLeft);
         roofLeftSide.setPosition(new Vec2(-8,-8f));
 
-        // make an elevated platform to get to floor 2
+        // the elevated platform to get to floor 2
         Shape elevatedPlatformShape = new BoxShape(1.5f,0.25f);
         StaticBody elevatedPlatform = new StaticBody(this,elevatedPlatformShape);
         elevatedPlatform.setPosition(new Vec2(16,-11));
 
-        // make a suspended platform
-        Shape platformShape = new BoxShape(3, 0.5f);
-        StaticBody platform1 = new StaticBody(this, platformShape);
-        platform1.setPosition(new Vec2(-8, -4f));
+        // the second floor roof/ ground for 3rd layer upwards
+        Shape roofShapeSecondFloor = new BoxShape(7.5f,0.25f);
+        StaticBody roofSecondFloorLeftSide = new StaticBody(this,roofShapeSecondFloor);
+        StaticBody roofSecondFloorRightSide = new StaticBody(this,roofShapeSecondFloor);
+        roofSecondFloorLeftSide.setPosition(new Vec2(-15,-0.5f));
+        roofSecondFloorRightSide.setPosition(new Vec2(15,-0.5f));
 
-        // make another suspended platform using the same shape as the first
-        StaticBody platform2 = new StaticBody(this,platformShape);
-        platform2.setPosition(new Vec2(8,-4f));
-
-        // and another...
-        StaticBody platform3 = new StaticBody(this,platformShape);
-        platform3.setPosition(new Vec2(4,-2f));
-        platform3.setAngleDegrees(25);
-
-        PlayerFighterCollisions gcl = new PlayerFighterCollisions(getPlayerFighter());
-        playerFighter.addCollisionListener(gcl);
-        ground.addCollisionListener(gcl);
 
         CoinCollectible coinOne = new CoinCollectible(this);
         coinOne.setPosition(new Vec2(0,-13.0f));

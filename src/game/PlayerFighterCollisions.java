@@ -15,9 +15,13 @@ public class PlayerFighterCollisions implements CollisionListener {
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Obstacle) {
             playerFighter.setLives(playerFighter.getLives()-1);
-        } else if (e.getOtherBody() instanceof CoinCollectible) {
+        }
+        else if (e.getOtherBody() instanceof CoinCollectible) {
             playerFighter.setCoins(playerFighter.getCoins()+1);
             e.getOtherBody().destroy();
+        }
+        else if (e.getOtherBody() instanceof Fighter) {
+            playerFighter.setLives(playerFighter.getLives()-1);
         }
     }
 

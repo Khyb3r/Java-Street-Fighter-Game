@@ -5,32 +5,43 @@ import city.cs.engine.World;
 import org.jbox2d.common.Vec2;
 
 public class PlayerFighter extends Fighter {
+    private boolean facingLeft = false;
     private int coinCount;
     private int liveCount;
+    private AttachedImage attachedImage;
 
     public PlayerFighter(World world, String type) {
         super(world,type);
         coinCount = 0;
         liveCount = 2;
+        facingLeft = false;
     }
+    public boolean getFacingLeft() {
+        return facingLeft;
+    }
+
+    public void setFacingLeft(boolean facingLeft) {
+        this.facingLeft = facingLeft;
+    }
+
 
     // methods to shoot projectiles from the Player fighter
-    public void shootKnifeLeft() {
-        ThrowingKnifeProjectile throwingKnifeProjectile = new ThrowingKnifeProjectile(getWorld());
+    public void playerShootOrb() {
+        OrbProjectile orbProjectile = new OrbProjectile(getWorld());
+        float playerPosX = this.getPosition().x;
+        float playerPosY = this.getPosition().y;
         // position of the projectile is the same as the fighters
-        throwingKnifeProjectile.setPosition(getPosition().add(new Vec2()));
-        // force for the orb
-        throwingKnifeProjectile.applyForce(new Vec2(50,0));
-    }
-    public void shootKnifeRight() {
-        ThrowingKnifeProjectile throwingKnifeProjectile = new ThrowingKnifeProjectile(getWorld());
-        // position of the projectile is the same as the fighters
-        throwingKnifeProjectile.setPosition(getPosition());
-        // force for the orb
-        throwingKnifeProjectile.applyForce(new Vec2(-50,0));
-    }
 
+        // force for the orb
+        if (this.getFacingLeft()) {
+            orbProjectile.setPosition(new Vec2(playerPosX - 1, playerPosY + 0.5f));
+            orbProjectile.setLinearVelocity(new Vec2(-15,0));
+        } else {
+            orbProjectile.setPosition(new Vec2(playerPosX + 1, playerPosY + 0.5f));
+            orbProjectile.setLinearVelocity(new Vec2(15, 0));
+        }
 
+    }
 
     public int getCoins() {return coinCount;}
     public void setCoins(int coins) {this.coinCount = coins;}

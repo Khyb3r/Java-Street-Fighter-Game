@@ -27,7 +27,6 @@ public class Fighter extends Walker {
             case "player":
                 playerImage = new BodyImage("data/streetfighterPlayer.gif", 2.65f);
                 addImage(playerImage);
-                playerAttachedImage = new AttachedImage(this,playerImage,0,0,getPosition());
                 break;
             case "enemy":
                 enemyImage = new BodyImage("data/enemyCombatFighter.gif", 2.85f);
@@ -36,7 +35,7 @@ public class Fighter extends Walker {
         }
     }
 
-    public AttachedImage getPlayerAttachedImage() {
-        return playerAttachedImage;
+    public BodyImage getPlayerImage() {
+        return playerImage;
     }
 }
