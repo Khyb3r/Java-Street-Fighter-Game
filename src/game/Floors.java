@@ -17,19 +17,18 @@ public class Floors extends StaticBody {
     private BodyImage floorImage;
     private String floorLevel;
 
-    private static Shape getFloorImage(String floorLevel) {
+    private static Shape getFloorShape(String floorLevel) {
         if (floorLevel == "ground") {
             return groundFloorshape;
-        } else if (floorLevel == "firstFloor") {
+        } else if (floorLevel == "floorOne") {
             return firstFloorShape;
-        } else if (floorLevel == "secondFloor") {
+        } else if (floorLevel == "floorTwoRight" || floorLevel == "floorTwoLeft") {
             return secondFloorShape;
-        }
-        else return null;
+        } else return null;
     }
 
     public Floors(World world, String floorLevel) {
-        super(world,getFloorImage(floorLevel));
+        super(world,getFloorShape(floorLevel));
         switch (floorLevel) {
             case "ground":
                 this.setPosition(new Vec2(0f,-14.5f));

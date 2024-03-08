@@ -11,6 +11,7 @@ public class OrbProjectile extends DynamicBody {
       SolidFixture orbFixture = new SolidFixture(this,orbShape);
       addImage(orbImage);
       setGravityScale(0);
-      addCollisionListener(new OrbProjectileCollisions(this));
+      // the orb projectile collision object for its behaviours
+        addCollisionListener(new OrbProjectileCollisions(this));
     }
 }

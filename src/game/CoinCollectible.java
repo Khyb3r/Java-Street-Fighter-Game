@@ -5,7 +5,7 @@ import city.cs.engine.*;
 public class CoinCollectible extends StaticBody {
 
     private static final Shape coinShape = new CircleShape(0.509f);
-    private final BodyImage coinImage = new BodyImage("data/coin.gif");
+    private static final BodyImage coinImage = new BodyImage("data/coin.gif");
     private int coinsAmount;
     CoinCollectible(World world) {
         super(world,coinShape);
