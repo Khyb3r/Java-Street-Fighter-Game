@@ -9,12 +9,18 @@ public class GameView extends UserView {
 
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
-     // this.background = new ImageIcon("data/books.png").getImage();
+    //  this.background = new ImageIcon("data/back.jpg").getImage();
     }
 
-    //@Override
+    @Override
     protected void paintBackground(Graphics2D g) {
-     //   g.drawImage(background,0,0,this);
+       g.drawImage(background,0,0,this);
     }
+
+    @Override
+    protected void paintForeground(Graphics2D g) {
+
+    }
+
 }
 

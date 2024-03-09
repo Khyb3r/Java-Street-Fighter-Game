@@ -54,7 +54,7 @@ public class Floors extends StaticBody {
              //   addImage();
                 break;
             case "floorThree":
-                this.setPosition(new Vec2(5,8.5f));
+                this.setPosition(new Vec2(4.05f,8.5f));
         }
     }
 }

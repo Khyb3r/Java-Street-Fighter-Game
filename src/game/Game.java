@@ -1,6 +1,7 @@
 package game;
 
 import city.cs.engine.*;
+import org.jbox2d.common.Vec2;
 
 import javax.swing.JFrame;
 
@@ -46,7 +47,7 @@ public class Game {
         frame.setVisible(true);
 
         //optional: uncomment this to make a debugging view
-       //ddddddddddd  JFrame debugView = new DebugViewer(world, 800, 600);
+    // JFrame debugView = new DebugViewer(world, 800, 600);
 
         // start our game world simulation!
         world.start();

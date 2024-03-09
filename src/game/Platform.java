@@ -15,7 +15,7 @@ public class Platform extends StaticBody {
   //          new BodyImage()
 
     private static Shape getPlatformShape(String platformType) {
-        if (platformType == "first") {
+        if (platformType == "first" || platformType == "fourth") {
             return firstPlatformShape;
         }
         else if (platformType == "second" || platformType == "secondAngled"
@@ -46,6 +46,9 @@ public class Platform extends StaticBody {
                 break;
             case "third":
                 this.setPosition(new Vec2(-17f,-1.35f));
+                break;
+            case "fourth":
+                this.setPosition(new Vec2(-17f,4.5f));
         }
     }
 }

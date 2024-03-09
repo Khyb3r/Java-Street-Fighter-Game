@@ -12,8 +12,9 @@ public class PlayerFighter extends Fighter {
 
     public PlayerFighter(World world, String type) {
         super(world,type);
+        this.setPosition(new Vec2(-16f,-13f));
         coinCount = 0;
-        liveCount = 2;
+        liveCount = 3;
         facingLeft = false;
     }
     public boolean getFacingLeft() {
@@ -43,6 +44,11 @@ public class PlayerFighter extends Fighter {
             orbProjectile.setAlwaysOutline(true);
         }
 
+    }
+    public void checkLives() {
+        if (this.getLives() <= 0) {
+            getWorld().stop();
+        }
     }
 
     public int getCoins() {return coinCount;}

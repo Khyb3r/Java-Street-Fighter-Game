@@ -8,12 +8,11 @@ public class Obstacle extends StaticBody {
     );
     private static final BodyImage spikeImage = new BodyImage("data/spikeofficial.png",1.75f
     );
-    private static final Shape fireShape = new PolygonShape(-1.23f,-0.85f, -1.57f,-0.42f, -1.25f,0.26f, -0.24f,1.21f, 1.01f,0.69f, 1.55f,-0.22f, 1.06f,-0.93f
+    private static final Shape fireShape = new PolygonShape(-1.48f,-1.69f, -0.98f,0.91f, 1.33f,0.71f, 1.57f,-1.74f
     );
-    private static final BodyImage fireImage = new BodyImage("data/fire10.png",3.7f);
+    private static final BodyImage fireImage = new BodyImage("data/firealt.gif",2.5f);
     Obstacle(World world,String type) {
         super(world);
-        this.setAlwaysOutline(true);
         switch (type) {
             case "spike":
                 SolidFixture solidFixture = new SolidFixture(this,spikeShape);

@@ -13,17 +13,18 @@ public class EnemyFighterControllerNeg implements StepListener {
         this.enemyFighter = enemyFighter;
         this.rightBound = rightBound;
         this.leftBound = leftBound;
+        this.enemyFighter.startWalking(1.75f);
     }
     @Override
     public void preStep(StepEvent stepEvent) {
         float currentXPos = this.enemyFighter.getPosition().x;
         // walk left when approaching right obstacle
         if (currentXPos > rightBound) {
-            this.enemyFighter.startWalking(-2.5f);
+            this.enemyFighter.startWalking(-2f);
         }
         // walk right when approaching left obstacle
         if (currentXPos < leftBound) {
-            this.enemyFighter.startWalking(2.5f);
+            this.enemyFighter.startWalking(2f);
         }
     }
 

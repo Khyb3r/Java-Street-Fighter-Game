@@ -5,7 +5,7 @@ import org.jbox2d.common.Vec2;
 
 import javax.swing.*;
 
-public class MovingPlatform extends StaticBody implements StepListener{
+public class MovingPlatform extends StaticBody implements StepListener {
     private static final Shape movingPlatformShape =
             new BoxShape(2f,0.15f);
     private BodyImage movingPlatImage;
@@ -14,7 +14,9 @@ public class MovingPlatform extends StaticBody implements StepListener{
     private Vec2 startPos;
     MovingPlatform(World world) {
         super(world,movingPlatformShape);
-        this.setPosition(new Vec2(-4.85f,3.5f));
+        this.setPosition(new Vec2(-4.85f,2.5f));
+        SolidFixture solidFixture = new SolidFixture(this,movingPlatformShape);
+        solidFixture.setFriction(2f);
         startPos = this.getPosition();
         rightSide = startPos.x+9.85f;
         leftSide = startPos.x-0.15f;
@@ -22,7 +24,9 @@ public class MovingPlatform extends StaticBody implements StepListener{
         world.addStepListener(this);
     }
 
+
     @Override
+    // Makes the platform move by resetting its position
     public void preStep(StepEvent stepEvent) {
         if (getPosition().x > rightSide) {
             delta*=-1f;

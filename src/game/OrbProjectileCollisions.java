@@ -22,7 +22,10 @@ public class OrbProjectileCollisions implements CollisionListener {
                 e.getOtherBody() instanceof CoinCollectible ||
                 e.getOtherBody() instanceof Walls ||
                 e.getOtherBody() instanceof Trampoline ||
-                e.getOtherBody() instanceof Platform) {
+                e.getOtherBody() instanceof Platform ||
+                e.getOtherBody() instanceof MovingPlatform ||
+                e.getOtherBody() instanceof Portal ||
+                e.getOtherBody() instanceof CoinBox ) {
             e.getReportingBody().destroy();
         }
     }
