@@ -29,8 +29,6 @@ public class GameWorld extends World {
 
         // the moving platforms
         MovingPlatform movingPlatform = new MovingPlatform(this);
-        MovingPlatformController mcp = new MovingPlatformController(movingPlatform,5f,-5f);
-        this.addStepListener(mcp);
 
         // the player character
         playerFighter = new PlayerFighter(this,"player");

@@ -30,9 +30,6 @@ public class PlayerFighterCollisions implements CollisionListener {
             if (playerFighter.getPosition().y - 1.5f >= trampolineTopYPos) {
                 playerFighter.setLinearVelocity(new Vec2(0, 100));
             }
-        } else if (e.getOtherBody() instanceof MovingPlatform) {
-            this.playerFighter.setLinearVelocity(new Vec2(0,25));
-            MovingPlatform movingPlatform = new MovingPlatform()
         }
     }
 }
