@@ -8,12 +8,12 @@ public class Floors extends StaticBody {
             new BoxShape(25, 0.5f);
 
     private static final Shape firstFloorShape =
-            new BoxShape(19.5f,0.25f);
+            new BoxShape(22.5f,0.25f);
     private static final Shape secondFloorShape =
             new BoxShape(7.5f,0.25f);
 
-   // private static final Shape thirdFloorShape =
-   //         new BoxShape()
+    private static final Shape thirdFloorShape =
+            new BoxShape(18.5f,0.25f);
     private BodyImage floorImage;
     private String floorLevel;
 
@@ -24,11 +24,15 @@ public class Floors extends StaticBody {
             return firstFloorShape;
         } else if (floorLevel == "floorTwoRight" || floorLevel == "floorTwoLeft") {
             return secondFloorShape;
+        } else if (floorLevel == "floorThree") {
+            return thirdFloorShape;
         } else return null;
     }
 
     public Floors(World world, String floorLevel) {
         super(world,getFloorShape(floorLevel));
+        SolidFixture solidFixture = new SolidFixture(this,getFloorShape(floorLevel));
+        solidFixture.setFriction(1f);
         switch (floorLevel) {
             case "ground":
                 this.setPosition(new Vec2(0f,-14.5f));
@@ -41,15 +45,16 @@ public class Floors extends StaticBody {
              //   addImage();
                 break;
             case "floorTwoLeft":
-                this.setPosition(new Vec2(-15,-0.5f));
+                this.setPosition(new Vec2(-15,1.5f));
             //    floorImage = new BodyImage();
              //   addImage();
                 break;
             case "floorTwoRight":
-                this.setPosition(new Vec2(15,-0.5f));
+                this.setPosition(new Vec2(15,1.5f));
              //   addImage();
                 break;
             case "floorThree":
+                this.setPosition(new Vec2(5,8.5f));
         }
     }
 }

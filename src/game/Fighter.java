@@ -22,9 +22,9 @@ public class Fighter extends Walker {
     public Fighter(World world, String type) {
         super(world, getFighterShape(type));
         SolidFixture fighterFixture = new SolidFixture(this,getFighterShape(type));
-        fighterFixture.setFriction(1f);
         switch (type) {
             case "player":
+                fighterFixture.setFriction(1f);
                 playerImage = new BodyImage("data/streetfighterPlayer.gif", 2.65f);
                 addImage(playerImage);
                 break;
