@@ -40,7 +40,7 @@ public class GameWorld extends World {
         playerFighter = new PlayerFighter(this,"player");
 
         // the collision object for all the players related collisions
-        PlayerFighterCollisions playerFighterCollisions = new PlayerFighterCollisions(playerFighter);
+        PlayerFighterCollisions playerFighterCollisions = new PlayerFighterCollisions(playerFighter,this);
         playerFighter.addCollisionListener(playerFighterCollisions);
 
         // 3 enemy players
@@ -55,7 +55,7 @@ public class GameWorld extends World {
         Fighter enemyFive = new Fighter(this,"enemy");
         enemyFive.setPosition(new Vec2(3.5f,9f));
 
-        // the step listeners forenemy players
+        // the step listeners for enemy players
         EnemyFighterControllerPos efcPos = new EnemyFighterControllerPos(enemyOne,8f,2f);
         EnemyFighterControllerNeg efcNeg = new EnemyFighterControllerNeg(enemyTwo,-2f,-8f);
         EnemyFighterControllerNeg efcNeg1 = new EnemyFighterControllerNeg(enemyThree,-10f,-16f);
@@ -83,8 +83,8 @@ public class GameWorld extends World {
         spikeFour.setPosition(new Vec2(15f,2.65f));
         Obstacle fire = new Obstacle(this,"fire");
         Obstacle fireOne = new Obstacle(this,"fire");
-        fire.setPosition(new Vec2(6.75f,-6.5f));
-        fireOne.setPosition(new Vec2(-8.5f,10f));
+        fire.setPosition(new Vec2(6.75f,-7f));
+        fireOne.setPosition(new Vec2(-8.5f,9.5f));
 
         // trampoline on the first floor
         Trampoline trampolineOne = new Trampoline(this);

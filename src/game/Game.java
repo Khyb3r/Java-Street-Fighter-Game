@@ -21,19 +21,15 @@ public class Game {
         GameWorld world = new GameWorld();
         GameView view = new GameView(world, 800, 600);
 
-
-        MouseListener mouseListener = new GiveFocus();
         view.setFocusable(true);
         view.addKeyListener(new PlayerFighterKeyController(world.getPlayerFighter()));
 
 
-
-
-        final JFrame frame = new JFrame("City Game");
+        final JFrame frame = new JFrame("Street Fighter");
         frame.add(view);
 
         // draw a 1-metre grid over the view
-        view.setGridResolution(1);
+       // view.setGridResolution(1);
 
         // enable the frame to quit the application
         // when the x button is pressed
@@ -52,6 +48,7 @@ public class Game {
         // start our game world simulation!
         world.start();
         view.requestFocus();
+
     }
 
     /** Run the game. */

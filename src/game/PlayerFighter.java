@@ -1,20 +1,20 @@
 package game;
 
 import city.cs.engine.AttachedImage;
+import city.cs.engine.SolidFixture;
 import city.cs.engine.World;
 import org.jbox2d.common.Vec2;
 
 public class PlayerFighter extends Fighter {
     private boolean facingLeft;
     private int coinCount;
-    private int liveCount;
+    private int healthCount;
     private AttachedImage attachedImage;
 
     public PlayerFighter(World world, String type) {
         super(world,type);
-        this.setPosition(new Vec2(-16f,-13f));
         coinCount = 0;
-        liveCount = 3;
+        healthCount = 100;
         facingLeft = false;
     }
     public boolean getFacingLeft() {
@@ -45,16 +45,11 @@ public class PlayerFighter extends Fighter {
         }
 
     }
-    public void checkLives() {
-        if (this.getLives() <= 0) {
-            getWorld().stop();
-        }
-    }
 
     public int getCoins() {return coinCount;}
     public void setCoins(int coins) {this.coinCount = coins;}
-    public int getLives() {return liveCount;}
-    public void setLives(int lives) {this.liveCount = lives;}
+    public int getHealthCount() {return healthCount;}
+    public void setHealthCount(int healthCount) {this.healthCount = healthCount;}
 
 }
 

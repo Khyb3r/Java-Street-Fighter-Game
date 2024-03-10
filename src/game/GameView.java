@@ -6,10 +6,14 @@ import java.awt.*;
 
 public class GameView extends UserView {
     private Image background;
+    private GameWorld world;
+
+    private static final Font font = new Font("Monospaced",Font.BOLD,15);
 
     public GameView(GameWorld world, int width, int height) {
         super(world, width, height);
-    //  this.background = new ImageIcon("data/back.jpg").getImage();
+        this.world = world;
+        this.background = new ImageIcon("data/back.jpg").getImage();
     }
 
     @Override
@@ -19,7 +23,11 @@ public class GameView extends UserView {
 
     @Override
     protected void paintForeground(Graphics2D g) {
-
+        int health = world.getPlayerFighter().getHealthCount();
+        int coins = world.getPlayerFighter().getCoins();
+        g.setColor(Color.GREEN);
+        g.setFont(font);
+        g.drawString("Player Health:" + health + "   " + "Coins:" + coins,15,20.5f);
     }
 
 }

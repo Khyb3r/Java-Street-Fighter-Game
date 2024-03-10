@@ -20,23 +20,22 @@ public class PlayerFighterKeyController implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyChar() == 'w')  {
-            System.out.println("jumped");
-            fighter.jump(9.75f);
+        if (e.getKeyChar() == 'w' || e.getKeyChar() == KeyEvent.VK_KP_UP)  {
+            fighter.jump(9.25f);
         }
-        else if (e.getKeyChar() == 'd') {
+        else if (e.getKeyChar() == 'd' || e.getKeyChar() == KeyEvent.VK_KP_RIGHT) {
             fighter.removeAllImages();
             fighter.addImage(this.fighter.getPlayerImage());
             fighter.startWalking(6);
             fighter.setFacingLeft(false);
         }
-        else if (e.getKeyChar() == 'a') {
+        else if (e.getKeyChar() == 'a' || e.getKeyChar() == KeyEvent.VK_KP_LEFT) {
             fighter.removeAllImages();
             fighter.addImage(new BodyImage("data/leftPlayer.gif",2.65f));
             fighter.startWalking(-6);
             fighter.setFacingLeft(true);
         }
-        else if (e.getKeyChar() == 'c') {
+        else if (e.getKeyChar() == KeyEvent.VK_SPACE) {
             fighter.playerShootOrb();
         }
     }

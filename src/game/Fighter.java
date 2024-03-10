@@ -27,6 +27,7 @@ public class Fighter extends Walker {
                 fighterFixture.setFriction(1f);
                 playerImage = new BodyImage("data/streetfighterPlayer.gif", 2.65f);
                 addImage(playerImage);
+                this.setPosition(new Vec2(-17f,-13f));
                 break;
             case "enemy":
                 enemyImage = new BodyImage("data/enemyCombatFighter.gif", 2.85f);

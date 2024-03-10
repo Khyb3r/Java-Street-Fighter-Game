@@ -41,11 +41,11 @@ public class Platform extends StaticBody {
                 this.setPosition(new Vec2(17.25f,-2f));
                 break;
             case "thirdAngled":
-                this.setPosition(new Vec2(-13.27f,-2.25f));
-                this.setAngleDegrees(-28);
+                this.setPosition(new Vec2(-13.4f,-3.25f));
+                this.setAngleDegrees(-35);
                 break;
             case "third":
-                this.setPosition(new Vec2(-17f,-1.35f));
+                this.setPosition(new Vec2(-16.94f,-2.16f));
                 break;
             case "fourth":
                 this.setPosition(new Vec2(-17f,4.5f));
