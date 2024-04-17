@@ -6,7 +6,10 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-
+/**
+ * Represents a trampoline object in the game world. When the player interacts with the trampoline,
+ * it produces a bouncing effect and plays a sound.
+ */
 public class Trampoline extends StaticBody {
     private static final Shape trampolineShape =
             new PolygonShape(-1.43f,-0.3f, -1.43f,0.46f, -0.92f,0.59f, 0.77f,0.57f, 1.34f,0.4f, 1.34f,-0.36f, 0.08f,-0.58f

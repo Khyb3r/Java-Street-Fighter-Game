@@ -29,7 +29,9 @@ public class Game {
     private GameControls gameControlsPanel;
     private JFrame frame;
 
-
+    /**
+     * Constructs a new Game object and initializes the game world, view, controls, and other necessary components.
+     */
     public Game() {
         menuVisible = true;
 

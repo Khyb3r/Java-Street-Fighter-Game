@@ -2,7 +2,10 @@ package game;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
-
+/**
+ * Floors class represents static bodies in the game world that act as floors or platforms.
+ * It extends the StaticBody class from the city.cs.engine package.
+ */
 public class Floors extends StaticBody {
     private static final Shape groundFloorshape =
             new BoxShape(25, 0.5f);
@@ -16,7 +19,12 @@ public class Floors extends StaticBody {
             new BoxShape(18.5f,0.25f);
     private BodyImage floorImage;
     private String floorLevel;
-
+    /**
+     * Returns the appropriate Shape object based on the provided floor level.
+     *
+     * @param floorLevel a string indicating the floor level ("ground", "floorOne", "floorTwoRight", "floorTwoLeft", or "floorThree")
+     * @return the corresponding Shape object for the floor level
+     */
     private static Shape getFloorShape(String floorLevel) {
         if (floorLevel == "ground") {
             return groundFloorshape;
@@ -28,7 +36,12 @@ public class Floors extends StaticBody {
             return thirdFloorShape;
         } else return null;
     }
-
+    /**
+     * Constructs a Floors object with the specified floor level and adds it to the provided world.
+     *
+     * @param world      the world in which the Floors object will be added
+     * @param floorLevel a string indicating the floor level ("ground", "floorOne", "floorTwoRight", "floorTwoLeft", or "floorThree")
+     */
     public Floors(World world, String floorLevel) {
         super(world,getFloorShape(floorLevel));
         SolidFixture solidFixture = new SolidFixture(this,getFloorShape(floorLevel));

@@ -6,10 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-
+/**
+ * Represents the visual view of the game. Manages painting the background, foreground, and updating the view.
+ */
 public class GameView extends UserView {
     private Image background;
-    private GameWorld world;
     private GameLevel gameLevel;
 
     private static final Font font = new Font("Monospaced",Font.BOLD,15);

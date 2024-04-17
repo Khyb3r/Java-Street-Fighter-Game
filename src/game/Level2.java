@@ -3,8 +3,15 @@ package game;
 import org.jbox2d.common.Vec2;
 
 import javax.sound.sampled.Port;
-
+/**
+ * Represents the second level of the game. This level features different platforms,
+ * obstacles, enemies, and collectibles compared to the first level.
+ */
 public class Level2 extends GameLevel{
+    /**
+     * Constructs a new Level2 object.
+     * @param game The Game object associated with this level.
+     */
     Level2(Game game) {
         super(game);
         // starting platform
@@ -56,6 +63,11 @@ public class Level2 extends GameLevel{
         // player Fighter level 2 position
         getPlayerFighter().setPosition(new Vec2(-17,11.5f));
         }
+    /**
+     * Checks if the level completion condition is met.
+     * In this level, the condition is met if the player collects at least one coin.
+     * @return true if the level is complete, false otherwise.
+     */
         @Override
         public boolean isComplete() {
             if (getPlayerFighter().getCoins() >= 1) {

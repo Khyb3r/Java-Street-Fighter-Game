@@ -1,9 +1,15 @@
 package game;
 
 import org.jbox2d.common.Vec2;
-
+/**
+ * Represents the third level of the game. This level introduces new challenges
+ * such as trampolines, keys, multiple floors, and more enemies.
+ */
 public class Level3 extends GameLevel{
-
+    /**
+     * Constructs a new Level3 object.
+     * @param game The Game object associated with this level.
+     */
     Level3(Game game) {
         super(game);
 
@@ -59,6 +65,11 @@ public class Level3 extends GameLevel{
         // player repositioned for level 3
         getPlayerFighter().setPosition(new Vec2(-15f,-13f));
     }
+    /**
+     * Checks if the level completion condition is met.
+     * In this level, the condition is met if the player collects at least five coins.
+     * @return true if the level is complete, false otherwise.
+     */
     @Override
     public boolean isComplete() {
         if (getPlayerFighter().getCoins() >= 5) {

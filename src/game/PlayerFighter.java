@@ -9,7 +9,11 @@ import javax.swing.JFrame;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-
+/**
+ * Represents the player's fighter character in the game. This class extends the Fighter class
+ * and includes additional functionality specific to the player, such as keeping track of coins
+ * collected and health status.
+ */
 public class PlayerFighter extends Fighter {
     private boolean facingLeft;
     private int coinCount;

@@ -1,8 +1,15 @@
 package game;
 
 import org.jbox2d.common.Vec2;
-
+/**
+ * Represents the first level of the game. This level contains various platforms,
+ * obstacles, enemies, and collectibles.
+ */
 public class Level1 extends GameLevel{
+    /**
+     * Constructs a new Level1 object.
+     * @param game The Game object associated with this level.
+     */
     public Level1(Game game) {
         super(game);
 
@@ -102,6 +109,11 @@ public class Level1 extends GameLevel{
         // create the portal which is the end of the game
         Portal portal = new Portal(this);
     }
+    /**
+     * Checks if the level completion condition is met.
+     * In this level, the condition is met if the player collects at least one coin.
+     * @return true if the level is complete, false otherwise.
+     */
     @Override
     public boolean isComplete() {
         if (getPlayerFighter().getCoins() >= 1) {

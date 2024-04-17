@@ -3,7 +3,10 @@ import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
 import javax.swing.*;
-
+/**
+ * Fighter class represents a character in the game world. It extends the Walker class from the city.cs.engine package.
+ * It can represent both player-controlled and enemy fighters.
+ */
 public class Fighter extends Walker {
 
     protected static final Shape enemyFighterShape = new BoxShape(1, 1.2f);
@@ -13,12 +16,24 @@ public class Fighter extends Walker {
     protected BodyImage enemyImage;
     protected BodyImage playerImage;
     protected AttachedImage playerAttachedImage;
+    /**
+     * Returns the appropriate Shape object based on the provided fighter type.
+     *
+     * @param type a string indicating the type of fighter ("player" or "enemy")
+     * @return the corresponding Shape object for the fighter type
+     */
     private static Shape getFighterShape(String type) {
         if (type == "player") {
             return playerFighterShape;
         }
         else return enemyFighterShape;
     }
+    /**
+     * Constructs a Fighter object with the specified type and adds it to the provided world.
+     *
+     * @param world the world in which the Fighter will be added
+     * @param type  a string indicating the type of fighter ("player" or "enemy")
+     */
     public Fighter(World world, String type) {
         super(world, getFighterShape(type));
         SolidFixture fighterFixture = new SolidFixture(this,getFighterShape(type));
@@ -35,7 +50,11 @@ public class Fighter extends Walker {
                 break;
         }
     }
-
+    /**
+     * Gets the image of the player fighter.
+     *
+     * @return the image of the player fighter
+     */
     public BodyImage getPlayerImage() {
         return playerImage;
     }

@@ -4,7 +4,10 @@ import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
 import javax.swing.*;
-
+/**
+ * Represents a moving platform object in the game world. The platform moves horizontally
+ * back and forth within a specified range.
+ */
 public class MovingPlatform extends StaticBody implements StepListener {
     private static final Shape movingPlatformShape =
             new BoxShape(2f,0.15f);
