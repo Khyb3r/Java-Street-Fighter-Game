@@ -2,14 +2,30 @@ package game;
 
 import city.cs.engine.AttachedImage;
 import city.cs.engine.SolidFixture;
+import city.cs.engine.SoundClip;
 import city.cs.engine.World;
 import org.jbox2d.common.Vec2;
+import javax.swing.JFrame;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 
 public class PlayerFighter extends Fighter {
     private boolean facingLeft;
     private int coinCount;
     private int healthCount;
-    private AttachedImage attachedImage;
+    private static SoundClip playerSound;
+    static {
+        try {
+            playerSound = new SoundClip("data/grunt.wav");
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            System.out.println(e);
+        }
+    }
+    public void playerGrunt() {
+        playerSound.play();
+    }
+
 
     public PlayerFighter(World world, String type) {
         super(world,type);

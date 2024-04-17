@@ -21,6 +21,7 @@ public class PlayerFighterCollisions implements CollisionListener {
     @Override
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Obstacle || e.getOtherBody() instanceof Fighter) {
+            playerFighter.playerGrunt();
             if (playerFighter.getPosition().x < e.getOtherBody().getPosition().x) {
                 playerFighter.setLinearVelocity(new Vec2(-4.5f,10));
             }
@@ -32,6 +33,7 @@ public class PlayerFighterCollisions implements CollisionListener {
             playerFighter.setCoins(playerFighter.getCoins() + 1);
             e.getOtherBody().destroy();
         } else if (e.getOtherBody() instanceof Trampoline) {
+            ((Trampoline) e.getOtherBody()).bounceSound();
             float trampolineTopYPos = e.getOtherBody().getPosition().y + 0.075f;
             if (playerFighter.getPosition().y - 1.5f >= trampolineTopYPos) {
                 playerFighter.setLinearVelocity(new Vec2(0, 50));
