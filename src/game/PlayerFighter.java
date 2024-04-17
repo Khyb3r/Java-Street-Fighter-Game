@@ -25,7 +25,12 @@ public class PlayerFighter extends Fighter {
         this.facingLeft = facingLeft;
     }
 
-
+    public void resetHealth() {
+        healthCount = 100;
+    }
+    public void resetCoins() {
+        coinCount = 0;
+    }
     // methods to shoot projectiles from the Player fighter
     public void playerShootOrb() {
         OrbProjectile orbProjectile = new OrbProjectile(getWorld());

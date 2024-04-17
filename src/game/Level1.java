@@ -1,13 +1,10 @@
 package game;
 
-import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
-public class GameWorld extends World {
-    private PlayerFighter playerFighter;
-
-    public GameWorld() {
-        super();
+public class Level1 extends GameLevel{
+    public Level1(Game game) {
+        super(game);
 
         // floors are created
         Floors groundFloor = new Floors(this,"ground");
@@ -36,12 +33,8 @@ public class GameWorld extends World {
         // the moving platforms
         MovingPlatform movingPlatform = new MovingPlatform(this);
 
-        // the player character
-        playerFighter = new PlayerFighter(this,"player");
-
-        // the collision object for all the players related collisions
-      //  PlayerFighterCollisions playerFighterCollisions = new PlayerFighterCollisions(playerFighter,this);
-     //   playerFighter.addCollisionListener(playerFighterCollisions);
+        // the player character initial position
+        getPlayerFighter().setPosition(new Vec2(-17f,-13f));
 
         // 3 enemy players
         Fighter enemyOne = new Fighter(this,"enemy");
@@ -83,8 +76,8 @@ public class GameWorld extends World {
         spikeFour.setPosition(new Vec2(15f,2.65f));
         Obstacle fire = new Obstacle(this,"fire");
         Obstacle fireOne = new Obstacle(this,"fire");
-        fire.setPosition(new Vec2(6.75f,-7f));
-        fireOne.setPosition(new Vec2(-8.5f,9.5f));
+        fire.setPosition(new Vec2(6.75f,-6.5f));
+        fireOne.setPosition(new Vec2(-8.5f,10f));
 
         // trampoline on the first floor
         Trampoline trampolineOne = new Trampoline(this);
@@ -108,11 +101,14 @@ public class GameWorld extends World {
 
         // create the portal which is the end of the game
         Portal portal = new Portal(this);
-
-        //**move** here the rest of the code from Game.java that
-        //populates the World - add platforms, Student, etc.
-        //(don't add anything related to the view)
-
+    }
+    @Override
+    public boolean isComplete() {
+        if (getPlayerFighter().getCoins() >= 1) {
+            return true;
         }
-    public PlayerFighter getPlayerFighter(){return this.playerFighter;}
+        else {
+            return false;
+        }
+    }
 }

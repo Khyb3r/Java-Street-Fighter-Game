@@ -10,11 +10,12 @@ import javax.sound.sampled.Port;
 
 public class PlayerFighterCollisions implements CollisionListener {
     private PlayerFighter playerFighter;
-
-    private GameWorld world;
-    public PlayerFighterCollisions(PlayerFighter playerFighter, GameWorld world) {
+    private Game game;
+    private GameLevel gameLevel;
+    public PlayerFighterCollisions(GameLevel gameLevel, Game game, PlayerFighter playerFighter) {
         this.playerFighter = playerFighter;
-        this.world = world;
+        this.game = game;
+        this.gameLevel = gameLevel;
     }
 
     @Override
@@ -36,7 +37,13 @@ public class PlayerFighterCollisions implements CollisionListener {
                 playerFighter.setLinearVelocity(new Vec2(0, 50));
             }
         } else if (e.getOtherBody() instanceof Portal) {
-            world.stop();
+            if (gameLevel.isComplete()) {
+                game.goToNextLevel();
+            }
+        } else if (e.getOtherBody() instanceof PortalLevel2) {
+            if (gameLevel.isComplete()) {
+                game.goToLevel3();
+            }
         }
     }
 }
