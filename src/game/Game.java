@@ -31,12 +31,13 @@ public class Game {
         level = new Level1(this);
 
         try {
-            gameMusic = new SoundClip("data/gametheme.wav");
+            gameMusic = new SoundClip("data/backgroundmusic.wav");
             gameMusic.loop();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             //code in here will deal with any errors
             //that might occur while loading/playing sound
             System.out.println(e);
+        }
 
             // make a view
             gameView = new GameView(level, 800, 600);
@@ -49,7 +50,7 @@ public class Game {
             frame.add(gameView);
 
             // draw a 1-metre grid over the view
-            gameView.setGridResolution(1);
+          //  gameView.setGridResolution(1);
 
             // enable the frame to quit the application
             // when the x button is pressed
@@ -63,14 +64,13 @@ public class Game {
             frame.setVisible(true);
 
             //optional: uncomment this to make a debugging view
-            JFrame debugView = new DebugViewer(level, 800, 600);
+          //  JFrame debugView = new DebugViewer(level, 800, 600);
 
             // start our game world simulation!
             level.start();
             gameView.requestFocus();
 
         }
-    }
 
     public void restartGame() {
         level.getPlayerFighter().resetHealth();
