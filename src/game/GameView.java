@@ -39,7 +39,7 @@ public class GameView extends UserView {
         int coins = gameLevel.getPlayerFighter().getCoins();
         g.setColor(Color.GREEN);
         g.setFont(font);
-        g.drawString("Player Health:" + health + "   " + "Coins:" + coins,15,20.5f);
+        g.drawString("Player Health:" + health,15,20.5f);
     }
     public void updateView() {
         repaint();

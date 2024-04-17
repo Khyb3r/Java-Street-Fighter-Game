@@ -46,6 +46,10 @@ public class PlayerFighterCollisions implements CollisionListener {
             if (gameLevel.isComplete()) {
                 game.goToLevel3();
             }
+        } else if (e.getOtherBody() instanceof Key) {
+            e.getOtherBody().destroy();
+            gameLevel.stop();
+            game.getGameMusic().stop();
         }
     }
 }

@@ -15,7 +15,7 @@ public class Trampoline extends StaticBody {
     private static SoundClip trampolineSound;
     static {
         try {
-            trampolineSound = new SoundClip("data/trampolined.wav");
+            trampolineSound = new SoundClip("data/trampoline.wav");
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             System.out.println(e);
         }

@@ -2,7 +2,8 @@ package game;
 import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JFrame;
+import javax.swing.*;
+
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
@@ -16,7 +17,6 @@ import java.awt.event.MouseListener;
  */
 public class Game {
 
-
     /**
      * Initialise a new Game.
      */
@@ -24,8 +24,14 @@ public class Game {
     private GameView gameView;
     private PlayerFighterKeyController playerController;
     private SoundClip gameMusic;
+    private boolean menuVisible;
+    private ControlPanel controlPanel;
+    private GameControls gameControlsPanel;
+    private JFrame frame;
+
 
     public Game() {
+        menuVisible = true;
 
         // GameWorld world = new GameWorld();
         level = new Level1(this);
@@ -46,8 +52,13 @@ public class Game {
             gameView.setFocusable(true);
 
 
-            final JFrame frame = new JFrame("Street Fighter");
+            frame = new JFrame("Street Fighter");
             frame.add(gameView);
+
+
+            controlPanel = new ControlPanel(this);
+            gameControlsPanel = new GameControls(this);
+            frame.add(controlPanel.panel1, BorderLayout.SOUTH);
 
             // draw a 1-metre grid over the view
           //  gameView.setGridResolution(1);
@@ -91,16 +102,7 @@ public class Game {
             playerController.updatePlayer(newFighter);
             gameView.updateView();
             level.start();
-        } /*else if (level instanceof Level2) {
-            level.stop();
-            PlayerFighter previousFighter = level.getPlayerFighter();
-            level = new Level3(this);
-            PlayerFighter newestFighter = level.getPlayerFighter();
-            gameView.setWorld(level);
-            playerController.updatePlayer(newestFighter);
-            level.start();
-     //   } else if (level instanceof Level3) {
-      //      level.stop(); */
+        }
     }
 
     public void goToLevel3() {
@@ -127,7 +129,6 @@ public class Game {
         playerController.updatePlayer(level.getPlayerFighter());
         level.start();
     }
-
     /**
      * Run the game.
      */
@@ -135,4 +136,37 @@ public class Game {
 
         new Game();
     }
+    public void toggleMenu() {
+        if (menuVisible) {
+            //hide menu
+            frame.remove(controlPanel.panel1);
+            menuVisible = false;
+            frame.pack();
+            level.start();
+        }
+        else {
+            //show menu
+            frame.add(controlPanel.panel1, BorderLayout.SOUTH);
+            menuVisible = true;
+            frame.pack();
+            level.stop();
+        }
+    }
+    public void transitionToGameControls(){
+        level.stop();
+        frame.remove(controlPanel.panel1);
+        frame.add(gameControlsPanel.panel1, BorderLayout.WEST);
+        frame.pack();
+    }
+
+    public void transitionBackToMain(){
+       frame.remove(gameControlsPanel.panel1);
+        frame.add(controlPanel.panel1, BorderLayout.SOUTH);
+        frame.pack();
+        level.start();
+    }
+    public SoundClip getGameMusic() {
+        return gameMusic;
+    }
+
 }
